@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # 下载 routes4.conf 文件
 echo "下载 routes4.conf 文件..."
