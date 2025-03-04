@@ -32,7 +32,10 @@ RUN LATEST_VERSION=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/relea
 
 # 创建启动脚本
 COPY start.sh /usr/local/bin/start.sh
+COPY iplist.sh /usr/local/bin/iplist.sh
 RUN chmod +x /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/iplist.sh
+
 # 开放22端口
 EXPOSE 22
 
