@@ -1,0 +1,58 @@
+mode: rule
+ipv6: false
+log-level: info
+allow-lan: true
+mixed-port: 7890
+unified-delay: false
+tcp-concurrent: true
+external-controller: 0.0.0.0:9090
+
+geodata-mode: true
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+  tracing: true
+
+sniffer:
+  enable: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+interface-name: eth0
+tun:
+  device: utun
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: false
+
+dns:
+  enable: true
+  listen: :53
+  ipv6: false
+  enhanced-mode: redir-host
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - '+.local'
+    - "*.msftncsi.com"
+    - "*.msftconnecttest.com"
+  default-nameserver:
+    - 192.168.38.242
+  nameserver:
+    - 192.168.38.242
+  proxy-server-nameserver:
+    - 192.168.38.242
+  nameserver-policy:
+    "geosite:cn,private":
+    - 192.168.38.242
+
