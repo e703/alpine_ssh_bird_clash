@@ -1,0 +1,9 @@
+version: "3"
+services:
+  bird_clash:
+    image: alpine_ssh_bird_clash
+    container_name: bird_clash
+    volumes:
+      - /opt/docker_conf/clash:/etc/clash
+      - /opt/docker_conf/bird:/etc/bird
+    restart: unless-stopped
