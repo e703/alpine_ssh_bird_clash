@@ -1,7 +1,7 @@
 version: "3"
 services:
   bird_clash:
-    image: alpine_ssh_bird_clash
+    image: aka280/sshd_bird_clash
     container_name: bird_clash
     volumes:
       - /opt/docker_conf/clash:/etc/clash
